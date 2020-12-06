@@ -1,6 +1,6 @@
 import string
 
-vocab = open("imdb.txt", errors='ignore').read().splitlines()
+vocab = open("../aclImdb/imdb.vocab", errors='ignore').read().splitlines()
 reviews = open("labeledBowTest.txt").read().splitlines()
 docFreq = [0] * len(vocab)
 

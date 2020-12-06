@@ -7,13 +7,13 @@ def TF_score(pair):
     right = int(pair[1])
     return right * math.log(25000/int(docFreq[left]))
 
-reviews = open("labeledBowTrain.txt").read().splitlines()
+reviews = open("labeledBowTest.txt").read().splitlines()
 
 updatedReviews = ""
 
 for line in reviews:
     bag = line.split()
-    updateLine = bag.pop(0) + " "
+    updateLine = "0 " if (int(bag.pop(0)) <= 4) else "1 "
     for word in bag:
         pair = word.split(":")
         updateLine += pair[0]
@@ -23,5 +23,5 @@ for line in reviews:
     updateLine += "\n"
     updatedReviews += updateLine
 
-with open('updatedLabeledBowTrain.txt', 'w') as file:
+with open('updatedLabeledBowTest.txt', 'w') as file:
     file.write("%s" % updatedReviews)
